@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather Project</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <link rel="stylesheet" href="src/styles.css" />
+  <script src="https://kit.fontawesome.com/d3b05a3ea9.js" crossorigin="anonymous"></script>
+  </script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"> </script>
+
+</head>
+
+<body>
+  <header>
+    <div class="weatherProject">
+      <div class="searchBar">
+      </div>
+      <form class="search-form" id="search-form">
+        <input type="city" id="city-input" autocomplete="off" autofocus="on" placeholder="Enter City Here" />
+        <input type="submit" />
+      </form>
+    </div>
+  </header>
+
+  <div class="currentCity_Container">
+    <p>
+    <button
+      class="btn btn-success w-30"
+      id="currentLocationButton">
+      📍Current Location
+    </button>
+    </p>
+    <h1>
+      <class id="currentCity"> </class>
+    </h1>
+  </div>
+
+  <div class="row">
+    <div class="col-sm">
+      <h5 id="currentDate">Current Date</h5>
+    </div>
+
+    <div class="col-sm">
+      <h2 id="currentTemp"> </h2>
+      <button class="unit" id="fahrenheit">°F</button>|<button class="unit"
+          id="celsius">°C</button>
+    </div>
+
+    <div class="col-sm">
+      <h5 id="currentTime">Current Time</h5>
+    </div>
+  </div>
+
+  <div class="container_weatherDetails"></div>
+
+  <div class="row">
+    <div class="col-sm">
+      <h5> Wind: <span id="windspeed"></span> mph</h5>
+    </div>
+
+    <div class="col-sm">
+      <h5> <span id="condition"></span><img src="images/sunny.png" />
+      </h5>
+    </div>
+
+    <div class="col-sm">
+     <h5> Humidity: <span id="humidity"></span>%</h5>
+    </div>
+
+    <div class="container">
+      <p>
+        <strong> 5-DAY FORECAST </strong>
+      </p>
+      <div class="row">
+        <div class="col">
+          <h5>
+            <strong> WED </strong>
+          </h5>
+          <div class="forecast">
+            84°F
+            <img src="images/sunny.png" />
+            63°F
+          </div>
+        </div>
+        <div class="col">
+          <h5>
+            <strong> THURS </strong>
+          </h5>
+          <div class="forecast">
+            90°F
+            <img src="images/partly_cloudy.png" />
+            67°F
+          </div>
+        </div>
+        <div class="col">
+          <h5>
+            <strong> FRI </strong>
+          </h5>
+          <div class="forecast">
+            95°F
+            <img src="images/partly_cloudy.png" />
+            69°F
+          </div>
+        </div>
+        <div class="col">
+          <h5>
+            <strong> SAT </strong>
+          </h5>
+          <div class="forecast">
+            93°F
+            <img src="images/partly_cloudy.png" />
+            66°F
+          </div>
+        </div>
+        <div class="col">
+          <h5>
+            <strong> SUN </strong>
+          </h5>
+          <div class="forecast">
+            88°F
+            <img src="images/partly_cloudy.png" />
+            64°F
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="src/script.js"></script>
+</body>
+
+</html>
