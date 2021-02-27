@@ -164,16 +164,31 @@ function displayWeatherCondition(response) {
 
 let celsiusTemp = null;
 
-//Fahrenheit Temp
+//Fahrenheit Conversion
 function showFahrenheitTemp(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#currentTemp");
+  celsiusLink.classList.remove("current");
+  fahrenheitLink.classList.add("current");
   let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
   temperatureElement.innerHTML = Math.round(fahrenheitTemp);
 }
 
 let fahrenheitLink = document.querySelector("#fahrenheitLink");
-  fahrenheitLink.addEventListener("click", showFahrenheitTemp)
+fahrenheitLink.addEventListener("click", showFahrenheitTemp);
+
+//Celsius Conversion
+function showCelsiusTemp(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#currentTemp");
+  celsiusLink.classList.add("current");
+  fahrenheitLink.classList.remove("current");
+  temperatureElement.innerHTML = Math.round(celsiusTemp);
+}
+
+let celsiusLink = document.querySelector("#celsiusLink");
+celsiusLink.addEventListener("click", showCelsiusTemp);
+
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit); 
