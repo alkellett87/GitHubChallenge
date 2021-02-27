@@ -31,6 +31,13 @@ h5 {
   font-size: 18px;
 }
 
+p {
+  text-align: center;
+  font-size: 24px;
+  color: #177ed4;
+  padding: 35px 20px 10px;
+}
+
 #currentLocationButton {
   display: inline-block;
   text-align: center;
@@ -67,16 +74,19 @@ h5 {
   color: white;
 }
 
+.weather_temp .current {
+  color: grey;
+  cursor: default;
+}
+
+.weather_temp .current:hover {
+  text-decoration: none;
+}
+
 .weather_forecast {
   margin-top: 10px;
 }
 
-p {
-  text-align: center;
-  font-size: 24px;
-  color: #177ed4;
-  padding: 35px 20px 10px;
-}
 .row {
   text-align: center;
   color: #177ed4;
