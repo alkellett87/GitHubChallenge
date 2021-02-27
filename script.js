@@ -38,7 +38,6 @@ function showTime() {
   let time = new Date ();
   let hour = time.getHours();
   let min = time.getMinutes();
-  let sec = time.getSeconds();
     am_pm = "AM";
 
   if (hour > 12){
@@ -69,6 +68,45 @@ function searchCity(city) {
   let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather";
   let apiUrl = `${apiEndpoint}?q=${city}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(displayWeatherCondition);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(displayForecast);
+}
+//Forecast
+function formatHours(timestamp){
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  return `${hours}:${minutes}`;
+}
+
+function displayForecast(response) {
+  let forecastElement = document.querySelector("#forecast");
+  forecast.innerHTML = null;
+  let forecast = null;
+
+  for (let index = 0; index < 6; index++) {
+    let forecast = response.data.list[index];
+     forecastElement.innerHTML +=
+    `<div class="col-2">
+          <h4>
+            ${formatHours(forecast.dt * 1000)}
+          </h4>
+          <img
+            src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
+            alt=""/>
+            <div class = "forecast-temp">
+              <strong>${Math.round(forecast.main.temp_max)}°
+              </strong>/${Math.round(forecast.main.temp_min)}°
+            </div>
+      </div>`;
+  }
 }
 
 function handleSubmit(event) {
@@ -124,3 +162,5 @@ function displayWeatherCondition(response) {
   iconElement.setAttribute ("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
   iconElement.setAttribute ("alt", response.data.weather[0].main);
 }
+
+searchCity("Greenville");
