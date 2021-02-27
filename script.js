@@ -88,7 +88,7 @@ function formatHours(timestamp){
 
 function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
-  forecast.innerHTML = null;
+  forecastElement.innerHTML = null;
   let forecast = null;
 
   for (let index = 0; index < 6; index++) {
@@ -101,9 +101,9 @@ function displayForecast(response) {
           <img
             src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
             alt=""/>
-            <div class = "forecast-temp">
+            <div class = "forecast_temp">
               <strong>${Math.round(forecast.main.temp_max)}°
-              </strong>/${Math.round(forecast.main.temp_min)}°
+              </strong>/ ${Math.round(forecast.main.temp_min)}°
             </div>
       </div>`;
   }
@@ -114,9 +114,6 @@ function handleSubmit(event) {
   let cityInputElement = document.querySelector("#cityInput");
   searchCity(cityInputElement.value);
 }
-
-let searchForm = document.querySelector("#search-form");
-searchForm.addEventListener("submit", handleSubmit);
 
 //Current Location
 function showPosition(position) {
@@ -141,7 +138,7 @@ currentLocationButton.addEventListener("click", getCurrentPosition);
 //Weather
 function displayWeatherCondition(response) {
   let temperatureElement = document.querySelector("#currentTemp");
-  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  temperatureElement.innerHTML = Math.round(celsiusTemp);
     
   let cityElement = document.querySelector("#currentCity");
   cityElement.innerHTML = response.data.name;
@@ -153,7 +150,7 @@ function displayWeatherCondition(response) {
   humidityElement.innerHTML = response.data.main.humidity;
   
   let windElement = document.querySelector("#windspeed");
-   windElement.innerHTML = Math.round(response.data.wind.speed);
+  windElement.innerHTML = Math.round(response.data.wind.speed);
   
   let dateElement = document.querySelector("#currentDate");
   dateElement.innerHTML = formatDate(response.data.dt*1000);
@@ -161,6 +158,24 @@ function displayWeatherCondition(response) {
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute ("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
   iconElement.setAttribute ("alt", response.data.weather[0].main);
+
+  celsiusTemp = response.data.main.temp;
 }
 
-searchCity("Greenville");
+let celsiusTemp = null;
+
+//Fahrenheit Temp
+function showFahrenheitTemp(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#currentTemp");
+  let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemp);
+}
+
+let fahrenheitLink = document.querySelector("#fahrenheitLink");
+  fahrenheitLink.addEventListener("click", showFahrenheitTemp)
+
+let searchForm = document.querySelector("#search-form");
+searchForm.addEventListener("submit", handleSubmit); 
+  
+searchCity("New York");  
