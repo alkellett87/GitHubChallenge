@@ -191,6 +191,4 @@ celsiusLink.addEventListener("click", showCelsiusTemp);
 
 
 let searchForm = document.querySelector("#search-form");
-searchForm.addEventListener("submit", handleSubmit); 
-  
-searchCity("New York");  
+searchForm.addEventListener("submit", handleSubmit);
