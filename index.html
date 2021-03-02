@@ -17,23 +17,22 @@
 <body>
   <header>
     <div class="weatherProject">
+
       <div class="searchBar">
-      </div>
       <form class="search-form" id="search-form">
         <input type="city" id="cityInput" autocomplete="off" autofocus="on" placeholder="Enter City Here" />
-        <input type="submit" />
+        <input type="submit"/>
       </form>
+      </div>
     </div>
   </header>
 
   <div class="currentCity_Container">
-    <p>
     <button
       class="btn btn-success w-30"
       id="currentLocationButton">
       📍Current Location
     </button>
-    </p>
     <h1>
       <class id="currentCity"></class>
     </h1>
@@ -41,42 +40,44 @@
 
   <div class="weather_app_wrapper">
   <div class="row">
-    <div class="col-sm">
+    <div class="col-4">
       <h5 id="currentDate">Current Date</h5>
     </div>
 
-    <div class="col-sm">
+    <div class="col-4">
       <div class="weather_temp">
-      <div class = "float left">
-      <h2 id="currentTemp"> </h2>
-      <span class="unit">
-      <a href="#" id="celsiusLink" class="current">°C</a> |
-      <a href="#" id="fahrenheitLink">°F</a>
-        </span>
-      </div>
+        <h2 id="currentTemp"> </h2>
+          <span class="unit">
+            <div class="float left">
+              <a href="#" id="celsiusLink" class="current">°C</a> |
+              <a href="#" id="fahrenheitLink">°F</a>
+          </span>
+        </div>
       </div> 
     </div>
 
-  <div class="col-sm">
+  <div class="col-4">
     <h5 id="clock">Current Time</h5>
     </div>
   </div>
   
   <div class="container_weatherDetails"></div>
   <div class="row">
-    <div class="col-sm">
+    <div class="col-4">
       <h5> Wind: <span id="windspeed"></span> mph</h5>
     </div>
 
-    <div class="col-sm">
+    <div class="col-4">
+      <div>
       <h5> <span id="description"></span>
         <img src=""
         alt= ""
         id ="icon">
       </h5>
+      </div> 
     </div>
 
-    <div class="col-sm">
+    <div class="col-4">
      <h5> Humidity: <span id="humidity"></span>%</h5>
     </div>
   </div>
