@@ -82,6 +82,19 @@ footer {
   color: white;
 }
 
+#description {
+  text-transform: capitalize;
+}
+
+.unit {
+  font-size: small;
+  float: right;
+}
+
+.weather_temp_container {
+  display: inline-block;
+}
+
 .weather_temp .current {
   color: grey;
   cursor: default;
