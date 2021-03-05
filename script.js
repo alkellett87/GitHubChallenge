@@ -72,6 +72,16 @@ function searchCity(city) {
   apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(displayForecast);
 }
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#cityInput");
+  searchCity(cityInputElement.value);
+}  
+
+let searchForm = document.querySelector("#search-form");
+searchForm.addEventListener("submit", handleSubmit);
+
 //Forecast
 function formatHours(timestamp){
   let date = new Date(timestamp);
@@ -102,17 +112,11 @@ function displayForecast(response) {
             src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
             alt=""/>
             <div class = "forecast_temp">
-              <strong>${Math.round(forecast.main.temp_max)}°
-              </strong>/ ${Math.round(forecast.main.temp_min)}°
+              <strong>High: ${Math.round(forecast.main.temp_max)}°
+              </strong>/ Low: ${Math.round(forecast.main.temp_min)}°
             </div>
       </div>`;
   }
-}
-
-function handleSubmit(event) {
-  event.preventDefault();
-  let cityInputElement = document.querySelector("#cityInput");
-  searchCity(cityInputElement.value);
 }
 
 //Current Location
@@ -188,7 +192,3 @@ function showCelsiusTemp(event) {
 
 let celsiusLink = document.querySelector("#celsiusLink");
 celsiusLink.addEventListener("click", showCelsiusTemp);
-
-
-let searchForm = document.querySelector("#search-form");
-searchForm.addEventListener("submit", handleSubmit);
