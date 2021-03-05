@@ -39,6 +39,7 @@ p {
 
 footer {
   text-align: center;
+  font-size: 12px;
 }
 
 .searchBar {
@@ -128,12 +129,12 @@ footer {
 }
 
 .weather_forecast h4 {
-  color: grey;
+  color: #177ed4;
   font-size: 16px;
 }
 
 .forecast_temp {
-  color: grey;
+  color: #177ed4;
   font-weight: 400;
   height: auto;
   line-height: 15px;
